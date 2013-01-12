@@ -431,7 +431,7 @@ Markov.Runner = (function() {
       break;
     }
 
-    if ((this.steps.length - 2 > -1) this.context === this.steps[this.steps.length - 2].context) {
+    if ((this.steps.length - 2 > -1) && this.context === this.steps[this.steps.length - 2].context) {
       this.emit('infinity', this.context);
     }
 
