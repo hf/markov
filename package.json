@@ -1,5 +1,5 @@
 {
-  "name": "markov",
+  "name": "markov-algorithm",
   "version": "0.0.1",
 
   "description": "A Markov (normal) algorithm interpreter.",
