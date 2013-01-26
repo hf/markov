@@ -188,7 +188,7 @@ Markov.Statement = (function() {
     this.fromRegExp = Statement.regexpEscape(clean);
 
     if (from === '!') {
-      this.fromRegExp = new RegExp('^$');
+      this.fromRegExp = new RegExp('(^|$|^$)');
       this.from = clean;
 
       return undefined;
