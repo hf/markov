@@ -185,7 +185,7 @@ Markov.Statement = (function() {
   Statement.prototype.setFrom = function(from) {
     var clean = from.replace('!', '').replace('!', '');
 
-    this.fromRegExp = clean;
+    this.fromRegExp = Statement.regexpEscape(clean);
 
     if (from === '!') {
       this.fromRegExp = new RegExp('^$');
@@ -195,18 +195,15 @@ Markov.Statement = (function() {
     }
 
     if (from.search('!') == 0) {
-      this.fromRegExp = '^' + Statement.regexpEscape(this.fromRegExp);
+      this.fromRegExp = '^' + this.fromRegExp;
+      from = from.replace('!', '');
     }
 
     if (from.search('!') > -1) {
-      if (this.fromRegExp !== clean) {
-        this.fromRegExp = '(' + this.fromRegExp + '|' + Statement.regexpEscape(clean) + '$)';
-      } else {
-        this.fromRegExp = this.fromRegExp + '$';
-      }
+      this.fromRegExp += "$";
     }
 
-    this.fromRegExp = new RegExp(Statement.regexpEscape(this.fromRegExp));
+    this.fromRegExp = new RegExp(this.fromRegExp);
     this.from = clean;
   };
 
