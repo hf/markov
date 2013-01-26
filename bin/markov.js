@@ -46,7 +46,9 @@ var runner = new markov.Runner(algorithm, argv.i);
 runner.on('step', function(step) {
   var statementIndex = step.before.search(step.statement.fromRegExp);
 
-  var before = step.before.slice(0, statementIndex) + colors.magenta(step.statement.from) + step.before.slice(statementIndex + step.statement.from.length);
+  var match = step.before.match(step.statement.fromRegExp)[0];
+
+  var before = step.before.slice(0, statementIndex) + colors.magenta(match) + step.before.slice(statementIndex + match.length);
   var after  = step.before.slice(0, statementIndex) + colors.yellow(step.statement.to) + step.before.slice(statementIndex + step.statement.to.length);
 
   console.log('  ' + (runner.steps.length - 1) + '. ' + before + '  -->  ' + after + '  |  ' + (step.statement.toString()));
