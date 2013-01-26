@@ -131,7 +131,7 @@ Markov.Statement = (function() {
   // Escapes the L.H.S. and R.H.S. contents of a rewrite rule to be a valid regular expression.
   //
   Statement.regexpEscape = function(text) {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+    return text.replace(/[-{}()*+?.,\\^$|#\s]/g, "\\$&");
   };
 
   // Compiles a rewrite statement in the form of:
